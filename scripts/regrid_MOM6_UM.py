@@ -248,7 +248,9 @@ def convert_gridded_field(field):
                     latitude=field_da.latitude,
                     longitude=field_da.longitude,
                     ),
-                    attrs=dict(Conventions='CF-1.7')
+                    attrs=dict(Conventions='CF-1.7',
+                               grid_staggering=6,
+                               um_version='13.5')    
                     )
     
     return field_ds
