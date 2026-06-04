@@ -158,8 +158,7 @@ def create_dataarray(field,
 
     if binary:
         # Force the field to be binary                            
-        data = xr.where(data > 0.5, 1,  data)
-        data = xr.where(data <= 0.5, 0, data)
+        data = xr.where(data <= 0.99, 0, data)
 
     # Output to DataArray
     lat_coord = xr.DataArray(
@@ -236,7 +235,8 @@ def convert_gridded_field(field):
                 print (f"INFO : Field has data corresponding to {GRID_STAGGER_DICT[i]}")
 
                 field_da = create_dataarray(field,
-                                            i)
+                                            i,
+                                            binary=True)
                 grid_var = create_grid_mapping_variable()
 
                 field_ds = xr.Dataset(
@@ -300,7 +300,7 @@ if __name__ == "__main__":
       UM_field, 
       unmapped_action=esmpy.api.constants.UnmappedAction.IGNORE,
       regrid_method=esmpy.api.constants.RegridMethod.CONSERVE,
-      norm_type=esmpy.api.constants.NormType.DSTAREA, 
+      norm_type=esmpy.api.constants.NormType.FRACAREA, 
       factors=True
     )
 
