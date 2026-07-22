@@ -298,9 +298,9 @@ def main(
 
         cubes_to_save = {
             # "filename": (cube, fill_value),
-            #"qrparm.mask": (land_mask, -1),
-            "qrparm.mask": (grid, -1),
-            "qrparm.mask_sea": (ocean_mask, -1),
+            "qrparm.mask": (land_mask, -1),
+            #"qrparm.mask": (grid, -1),
+            "qrparm.mask_sea": (ocean_mask, -1),            
             "qrparm.landfrac": (land_fraction, None),
         }
         for filename, (cube, fill_value) in cubes_to_save.items():

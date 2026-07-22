@@ -39,13 +39,13 @@ def regular_points(zeroth, step, count):
     
     return points
 
-def replace_lat_lon(cube,filename:
+def replace_lat_lon(cube,filename):
     """
     Replace the 32-bit lat and lon points of input cube with 64 bit points
     contructed from the PP field of the input cube
     """
 
-    field, = FF2PP(filename), read_data=False)
+    field, = FF2PP(filename, read_data=False)
 
     bdx = field.bdx
     bzx = field.bzx
@@ -60,12 +60,12 @@ def replace_lat_lon(cube,filename:
 
     cube.coord('longitude').points = lon_points
     cube.coord('latitude').points = lat_points
-
+    cube.attributes['grid_staggering'] = 6
     return cube
 
 
-ANCIL_DIR = Path('/scratch/gb02/pag548/cylc-run/rCM3-test-UM-ancil/share/data/ancils/Lismore/d1100')
-MASK = ANCIL_DIR / 'qrparm.mask'
+ANCIL_DIR = Path('/scratch/gb02/pag548/cylc-run/rCM3-ancil-suite/share/data/ancils/Lismore/d1100')
+MASK = ANCIL_DIR / 'qrparm.mask_cci'
 #breakpoint()
 mask, = iris.load(MASK)
 
@@ -84,4 +84,4 @@ lbrow = ff2pp.lbrow
 lon_points = regular_points(bzx, bdx, lbnpt)
 lat_points = regular_points(bzy, bdy, lbrow)
 
-mask = replace_lat_lon(mask,ff2pp)
+mask = replace_lat_lon(mask,MASK)

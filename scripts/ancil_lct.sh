@@ -14,9 +14,9 @@ set -x
 
 export HOME="/home/548/pag548"
 
-export CYLC_SUITE_RUN_DIR="/home/548/pag548/cylc-run/u-dg767"
-export CYLC_SUITE_DEF_PATH="${HOME}/cylc-run/u-dg767"
-export CYLC_SUITE_DEF_PATH_ON_SUITE_HOST="/home/548/pag548/cylc-run/u-dg767"
+export CYLC_SUITE_RUN_DIR="/home/548/pag548/cylc-run/rCM3-ancil-suite"
+export CYLC_SUITE_DEF_PATH="${HOME}/cylc-run/rCM3-ancil-suite"
+export CYLC_SUITE_DEF_PATH_ON_SUITE_HOST="/home/548/pag548/cylc-run/u-rCM3-ancil-suite"
 export CYLC_SUITE_UUID="192cf8a1-510c-4992-b2d8-5df71e94b1b9"
  
 # CYLC TASK ENVIRONMENT:
@@ -39,8 +39,8 @@ ANTS_MODULE="ants/ug-2.1.0"
 ROSE_DATA="$CYLC_SUITE_RUN_DIR/share/data"
 
 CONTRIB_APPS="$CYLC_SUITE_RUN_DIR/share/contrib_apps"
-PATH_PREPEND="${HOME}/cylc-run/u-dq487/share/fcm_make_ants/build/bin"
-PYTHONPATH_PREPEND="${HOME}/cylc-run/u-dq487/share/fcm_make_ants/build/lib"
+PATH_PREPEND="${HOME}/cylc-run/rCM3-ancil-suite/share/fcm_make_ants/build/bin"
+PYTHONPATH_PREPEND="${HOME}/cylc-run/rCM3-ancil-suite/share/fcm_make_ants/build/lib"
 #PATH_PREPEND=/g/data/gb02/public/ants_build/bin
 #PYTHONPATH_PREPEND=/g/data/gb02/public/ants_build/lib/
 ANCIL_MASTER="$CYLC_SUITE_RUN_DIR/share/data/etc/ancil_master_ants/"
@@ -67,7 +67,7 @@ target_lsm="${HOME}/code/UM_config_tools/scripts/dummy_cons.nc"
 ANTS_CONFIG=${CYLC_SUITE_RUN_DIR}/work/1/Lismore_era5_${ROSE_TASK_APP}/rose-app-run.conf
 
 # To load the executable
-ANTS_LAUNCH="${HOME}/cylc-run/u-dq487/share/fcm_make_ants/build/bin/ants-launch"
+ANTS_LAUNCH="${HOME}/cylc-run/rCM3-ancil-suite/share/fcm_make_ants/build/bin/ants-launch"
 #ANTS_LAUNCH=/g/data/gb02/public/ants_build/bin/ants-launch
 
 export PATH=$PATH_PREPEND:$PATH
@@ -78,7 +78,7 @@ echo "PYTHONPATH=$PYTHONPATH"
 # To launch the executable
 #echo "ants-launch ${CONTRIB_APPS}/LCT/ancil_lct.py ${source} --target-lsm ${target_lsm} --transform-path ${transformpath} -o ${output_vegfrac} --landseamask-output ${output_lsm} --ants-config ${ANTS_CONFIG}"
 
-${ANTS_LAUNCH} ${HOME}/code/UM_config_tools/scripts/ancil_lct.py ${source} --target-lsm ${target_lsm} --transform-path ${transformpath} -o ${output_vegfrac}  --ants-config ${ANTS_CONFIG}
+${ANTS_LAUNCH} ${HOME}/code/UM_config_tools/scripts/ancil_lct.py ${source} --target-grid ${target_grid} --transform-path ${transformpath} -o ${output_vegfrac}  --ants-config ${ANTS_CONFIG}
 
 # From rose-app-run.conf
 #[ants_decomposition]
