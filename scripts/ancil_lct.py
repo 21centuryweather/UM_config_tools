@@ -49,12 +49,12 @@ import os
 import warnings
 
 import sys
-sys.path.insert(0,'/home/548/pag548/cylc-run/rCM3-ancil-suite/share/fcm_make_ants/build/lib/')
+##sys.path.insert(0,'/home/548/pag548/cylc-run/rCM3-ancil-suite/share/fcm_make_ants/build/lib/')
 
 import ants
 import ants.decomposition as decomp
 import ants.fileformats.cover_mapping as cover_mapping
-import ants.io.save as save
+#import ants.io.save as save
 import ants.utils
 import iris
 import numpy as np
